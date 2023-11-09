@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="DS-NeRV: Neural Video Representations with Decomposed Static and Dynamic Codes.">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DS-NeRV: Neural Video Representations with Decomposed Static and Dynamic Codes</title>
+
+<!--   Global site tag (gtag.js) - Google Analytics-->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<!--<nav class="navbar" role="navigation" aria-label="main navigation">-->
+<!--  <div class="navbar-brand">-->
+<!--    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">-->
+<!--      <span aria-hidden="true"></span>-->
+<!--      <span aria-hidden="true"></span>-->
+<!--      <span aria-hidden="true"></span>-->
+<!--    </a>-->
+<!--</nav>-->
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">DS-NeRV: Neural Video Representations with Decomposed Static and Dynamic Codes</h1>
+          <div class="is-size-5 publication-authors">
+          </div>
+          <div class="column has-text-centered">
+            <div class="publication-links">
+<!--              &lt;!&ndash; PDF Link. &ndash;&gt;-->
+<!--              <span class="link-block">-->
+<!--                <a href="https://arxiv.org/pdf/2011.12948"-->
+<!--                   class="external-link button is-normal is-rounded is-dark">-->
+<!--                  <span class="icon">-->
+<!--                      <i class="fas fa-file-pdf"></i>-->
+<!--                  </span>-->
+<!--                  <span>Paper</span>-->
+<!--                </a>-->
+<!--              </span>-->
+<!--              <span class="link-block">-->
+<!--                <a href="https://arxiv.org/abs/2011.12948"-->
+<!--                   class="external-link button is-normal is-rounded is-dark">-->
+<!--                  <span class="icon">-->
+<!--                      <i class="ai ai-arxiv"></i>-->
+<!--                  </span>-->
+<!--                  <span>arXiv</span>-->
+<!--                </a>-->
+<!--              </span>-->
+<!--              &lt;!&ndash; Video Link. &ndash;&gt;-->
+<!--              <span class="link-block">-->
+<!--                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"-->
+<!--                   class="external-link button is-normal is-rounded is-dark">-->
+<!--                  <span class="icon">-->
+<!--                      <i class="fab fa-youtube"></i>-->
+<!--                  </span>-->
+<!--                  <span>Video</span>-->
+<!--                </a>-->
+<!--              </span>-->
+<!--              &lt;!&ndash; Code Link. &ndash;&gt;-->
+                <span class="link-block">
+                  <a href="#"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code(Coming soon)</span>
+                    </a>
+                </span>
+<!--              &lt;!&ndash; Dataset Link. &ndash;&gt;-->
+<!--              <span class="link-block">-->
+<!--                <a href="https://github.com/google/nerfies/releases/tag/0.1"-->
+<!--                   class="external-link button is-normal is-rounded is-dark">-->
+<!--                  <span class="icon">-->
+<!--                      <i class="far fa-images"></i>-->
+<!--                  </span>-->
+<!--                  <span>Data</span>-->
+<!--                  </a>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+
+      <div class="column">
+        <div class="content">
+
+          <video id="dt_video" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dt_video.mp4"
+                    type="video/mp4">
+          </video>
+          <h4 align="center">Decoding part of dynamic codes</h4>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="content">
+
+          <video id="pred_video" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/pred_video.mp4"
+                    type="video/mp4">
+          </video>
+          <h4 align="center">Prediction</h4>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="content">
+
+          <video id="st_video" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/st_video.mp4"
+                    type="video/mp4">
+          </video>
+          <h4 align="center">Decoding part of static codes</h4>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+          <img src="./static/images/abstract.png" width="100%" ></iframe>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="subtitle level-left">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+           Video implicit neural representations have recently evolved rapidly to become a new tool for high-quality video representation and compression. However, existing work mainly relies on neural networks to model videos uniformly, neglecting the distinct modeling of static and dynamic components across the entire video. Furthermore, this unified modeling approach underutilizes the temporal correlations present in videos.
+            To exploit the temporal correlations of videos for efficient modeling, we propose DS-NeRV, which decomposes videos into sparse, learnable static and dynamic codes without the need for explicit optical flow or residual supervision. These codes represent the shared static and cross-time dynamic information within the video. Additionally, we design a cross-channel attention-based fusion module to fuse these static and dynamic codes for frame decoding.
+            Our approach achieves a high quality reconstruction of 31.20 PSNR with only 0.35M parameters due to its compact static and dynamic codes design. We outperform existing video implicit neural representations in many downstream tasks and achieve comparable performance to some other conventional video compression methods.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths-desktop">
+        <h2 class="subtitle level-left">(1) DS-NeRV overview</h2>
+        <div class="content has-text-justified">
+          <img src="./static/images/overview+codeselect2.png" width="100%" ></iframe>
+
+          <p>DS-NeRV decomposes the video into learnable static and dynamic codes. <strong>Static Codes.</strong> The two <span style="color: rgb(205, 205, 0);">gold yellow</span> static codes shown above are the two nearest selected, and after being weighted sum, they are passed to the fusion decoder.<strong>Dynamic Codes.</strong> The original dynamic code distribution is shown in <span style="color: rgb(133, 133, 133);">gray</span>, and the interpolated dynamic code is shown in <span style="color: rgb(230, 204, 127);">yellow</span>. The selected one is shown in <span style="color: rgb(102, 159, 180);">blue</span> which is forwarded to fusion decoder.</p>
+
+        </div>
+      </div>
+    </div>
+    <!--/ overview. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="subtitle level-left">(2) Fusion Decoder and CCA Fusion</h2>
+        <div class="content has-text-justified">
+          <img src="./static/images/Decoder2.png" width="100%" ></iframe>
+         <p>
+           (a) The pipeline of Fusion Decoder. Decoder takes as input the static and dynamic codes corresponding to index <span><b><i>t</i></b></span>  and fuses their information to output frame. (b) Architecture of CCA Fusion Module. The CCA module fuses the information of static and dynamic codes by cross-channel attention.
+         </p>
+        </div>
+      </div>
+    </div>
+    <!--/ decoder. -->
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="subtitle level-left ">(3) Video Reconstruction</h2>
+        <h3>Quantitative results</h3>
+        <div class="content has-text-justified">
+          <img src="./static/images/reconstruction.png" width="100%" ></iframe>
+        </div>
+        <h3>Qualitative results</h3>
+
+          <div class="content has-text-justified">
+              <img src="./static/images/UVGandDAVIS3.png" width="100%" ></iframe>
+             <p>
+              Comparison of video reconstruction results on UVG and DAVIS. (Top) Jockey. (Bottom) Blackswan.
+             </p>
+          </div>
+      </div>
+    </div>
+  </div>
+<!--       <div class="container is-max-desktop">-->
+<!--        <div class="columns is-centered">-->
+
+<!--          <div class="column">-->
+<!--            <div class="content">-->
+
+<!--              <video id="gt_video" autoplay controls muted loop playsinline height="100%">-->
+<!--                <source src="./static/videos/gt.mp4"-->
+<!--                        type="video/mp4">-->
+<!--              </video>-->
+<!--              <h4 align="center">Ground Truth</h4>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          <div class="column">-->
+<!--            <div class="content">-->
+
+<!--              <video id="ours_video" autoplay controls muted loop playsinline height="100%">-->
+<!--                <source src="./static/videos/ours.mp4"-->
+<!--                        type="video/mp4">-->
+<!--              </video>-->
+<!--              <h4 align="center">Ours</h4>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          <div class="column">-->
+<!--            <div class="content">-->
+
+<!--              <video id="hnerv_video" autoplay controls muted loop playsinline height="100%">-->
+<!--                <source src="./static/videos/hnerv.mp4"-->
+<!--                        type="video/mp4">-->
+<!--              </video>-->
+<!--              <h4 align="center">HNeRV</h4>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="column">-->
+<!--            <div class="content">-->
+
+<!--              <video id="dnerv_video" autoplay controls muted loop playsinline height="100%">-->
+<!--                <source src="./static/videos/dnerv.mp4"-->
+<!--                        type="video/mp4">-->
+<!--              </video>-->
+<!--              <h4 align="center">DNeRV</h4>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--       </div>-->
+
+<!--    &lt;!&ndash;    DAVIS&ndash;&gt;-->
+<!--    <div class="container is-max-desktop">-->
+<!--        <div class="columns is-centered">-->
+
+<!--          <div class="column">-->
+<!--            <div class="content">-->
+
+<!--              <video id="gt_car_shadow" autoplay controls muted loop playsinline height="100%">-->
+<!--                <source src="./static/videos/gt_car_shadow.mp4"-->
+<!--                        type="video/mp4">-->
+<!--              </video>-->
+<!--              <h4 align="center">Ground Truth</h4>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          <div class="column">-->
+<!--            <div class="content">-->
+
+<!--              <video id="ours_car_shadow" autoplay controls muted loop playsinline height="100%">-->
+<!--                <source src="./static/videos/ours_car_shadow.mp4"-->
+<!--                        type="video/mp4">-->
+<!--              </video>-->
+<!--              <h4 align="center">Ours</h4>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          <div class="column">-->
+<!--            <div class="content">-->
+
+<!--              <video id="hnerv_car_shadow" autoplay controls muted loop playsinline height="100%">-->
+<!--                <source src="./static/videos/hnerv_car_shadow.mp4"-->
+<!--                        type="video/mp4">-->
+<!--              </video>-->
+<!--              <h4 align="center">HNeRV</h4>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="column">-->
+<!--            <div class="content">-->
+
+<!--              <video id="dnerv_car_shadow" autoplay controls muted loop playsinline height="100%">-->
+<!--                <source src="./static/videos/dnerv_car_shadow.mp4"-->
+<!--                        type="video/mp4">-->
+<!--              </video>-->
+<!--              <h4 align="center">DNeRV</h4>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--       </div>-->
+<!--    </div>-->
+<!--    &lt;!&ndash;/ reconstruction. &ndash;&gt;-->
+
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="subtitle level-left ">(4) Video Inpainting</h2>
+        <h3>Quantitative results</h3>
+        <div class="content has-text-justified">
+          <img src="./static/images/inpaint.png" width="100%" ></iframe>
+        </div>
+        <h3>Qualitative results with disperse mask</h3>
+        <div class="columns is-centered">
+          <div class="column">
+            <div class="content">
+              <img src="./static/videos/gt_sparse.gif" loop>
+              <p align="center">Ground Truth</p>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="content">
+
+             <img src="./static/videos/ours_sparse.gif" loop>
+              <p align="center">Ours</p>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="content">
+
+             <img src="./static/videos/hnerv_sparse.gif" loop>
+              <p align="center">HNeRV</p>
+            </div>
+          </div>
+          <div class="column">
+            <div class="content">
+
+              <img src="./static/videos/dnerv_sparse.gif" loop>
+              <p align="center">DNeRV</p>
+            </div>
+          </div>
+        </div>
+          <h3>Qualitative results with central mask</h3>
+        <div class="columns is-centered">
+          <div class="column">
+            <div class="content">
+
+              <img src="./static/videos/gt_central.gif" autoplay loop alt="GT">
+              <p align="center">Ground Truth</p>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="content">
+
+             <img src="./static/videos/ours_central.gif" loop>
+              <p align="center">Ours</p>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="content">
+
+             <img src="./static/videos/hnerv_central.gif" loop>
+              <p align="center">HNeRV</p>
+            </div>
+          </div>
+          <div class="column">
+            <div class="content">
+
+              <img src="./static/videos/dnerv_central.gif" loop>
+              <p align="center">DNeRV</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--interpolation-->
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="subtitle level-left ">(5) Video Interpolation</h2>
+        <h3>Quantitative results</h3>
+        <div class="content has-text-justified">
+          <img src="./static/images/interpolation.png" width="100%" ></iframe>
+        </div>
+        <h3>Qualitative results</h3>
+        <div class="columns is-centered">
+          <div class="column">
+            <div class="content">
+
+              <img src="./static/videos/gt_interp.gif"  autoplay muted loop playsinline height="100%">
+              <p align="center">Ground Truth</p>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="content">
+
+             <img src="./static/videos/ours_interp.gif" loop>
+              <p align="center">Ours</p>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="content">
+
+             <img src="./static/videos/hnerv_interp.gif" loop>
+              <p align="center">HNeRV</p>
+            </div>
+          </div>
+          <div class="column">
+            <div class="content">
+
+              <img src="./static/videos/dnerv_interp.gif" loop>
+              <p align="center">DNeRV</p>
+            </div>
+          </div>
+        </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="subtitle level-left ">(6) Video Compression</h2>
+        <h3>Quantitative results</h3>
+        <div class="content has-text-justified">
+          <img src="./static/images/compression2.png" width="100%" ></iframe>
+        </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+         <p>
+            The website template was borrowed and modified from <a
+              href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          </p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
